@@ -8,7 +8,7 @@ export default function DarkModeSwitch() {
 
   const currentTheme = theme === 'system' ? systemTheme : theme
   const size = 36
-  const buttonStyle = `text-xl cursor-pointer hover:text-amber-500`
+  const buttonStyle = `text-xl cursor-pointer hover:text-amber-600`
 
   const handleClick = () => {
     setTheme((prev)=> prev === 'dark' ? 'light': 'dark')
