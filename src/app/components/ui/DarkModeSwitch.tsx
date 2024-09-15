@@ -1,22 +1,37 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { MdLightMode, MdDarkMode } from "react-icons/md";
 import { useTheme } from "next-themes";
+
 export default function DarkModeSwitch() {
+  const { theme, setTheme, systemTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-  const { theme,setTheme,systemTheme} = useTheme();
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-  const currentTheme = theme === 'system' ? systemTheme : theme
-  const size = 36
-  const buttonStyle = `text-xl cursor-pointer hover:text-amber-600`
+  if (!mounted) return null; 
+
+  const currentTheme = theme === "system" ? systemTheme : theme;
+  const size = 36;
+  const buttonStyle = `text-xl cursor-pointer hover:text-amber-600`;
 
   const handleClick = () => {
-    setTheme((prev)=> prev === 'dark' ? 'light': 'dark')
-  }
-  
+    setTheme(currentTheme === "dark" ? "light" : "dark");
+  };
+
   return (
     <>
-      { currentTheme === "dark" ? (<MdLightMode onClick={handleClick} className={buttonStyle} size={size}/>) :(<MdDarkMode onClick={handleClick} className={buttonStyle} size={size}/>)}
+      {mounted && currentTheme === "dark" ? (
+        <button onClick={handleClick}>
+          <MdLightMode className={buttonStyle} size={size} />
+        </button>
+      ) : (
+        <button onClick={handleClick}>
+          <MdDarkMode className={buttonStyle} size={size} />
+        </button>
+      )}
     </>
   );
 }
