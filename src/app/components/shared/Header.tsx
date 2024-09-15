@@ -17,7 +17,7 @@ export default function Header() {
           size={24}
         />
       </nav>
-      <div className="flex flex-col gap-1 items-center">
+      <div className="flex gap-3 items-center">
       <DarkModeSwitch/>
         <Link href={"/"}>
           <span className="text-2xl font-bold bg-amber-500 py-1 px-2 rounded-lg">
