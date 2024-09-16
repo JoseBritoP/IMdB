@@ -11,8 +11,8 @@ interface MenuItemsProps {
 
 export default function MenuItem({title,andress,Icon,size}:MenuItemsProps) {
   return (
-    <Link href={andress} className='hover:text-amber-500 transition-colors duration-200 ease-in-out text-center'>
-      <p className='uppercase hidden sm:inline text-sm font-semibold'>{title}</p>
+    <Link href={andress} className='hover:text-amber-500 transition-colors duration-200 ease-in-out text-center flex flex-col items-center'>
+      <p className='uppercase hidden sm:inline text-base font-semibold'>{title}</p>
       <Icon size={size}/>
     </Link>
   )

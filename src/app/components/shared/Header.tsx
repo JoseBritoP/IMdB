@@ -7,7 +7,7 @@ import DarkModeSwitch from "../ui/DarkModeSwitch";
 
 export default function Header() {
   return (
-    <header className="flex justify-between items-center p-3 max-w-6xl mx-auto">
+    <header className="flex justify-evenly items-center p-3 w-full mx-auto bg-gray-500 dark:bg-gray-800">
       <nav className="flex gap-4">
         <MenuItem title="Home" andress="/" Icon={AiFillHome} size={24} />
         <MenuItem
@@ -18,7 +18,7 @@ export default function Header() {
         />
       </nav>
       <div className="flex gap-3 items-center">
-      <DarkModeSwitch/>
+        <DarkModeSwitch />
         <Link href={"/"}>
           <span className="text-2xl font-bold bg-amber-500 py-1 px-2 rounded-lg">
             IMDb
