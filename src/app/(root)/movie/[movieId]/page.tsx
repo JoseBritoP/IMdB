@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { Movie } from "@/app/interfaces/MoviesInterface";
+import NoMovies from "@/app/components/shared/NoMovies";
 
 export default async function MovieDetailPage({
   params,
@@ -15,15 +15,7 @@ export default async function MovieDetailPage({
   const movie = await res.json() as Movie;
   if (!res.ok)
     return (
-      <section className="flex flex-col items-center justify-center mx-auto max-w-2xl pt-20 gap-5">
-        <p className="text-2xl font-semibold">Movie not found</p>
-        <Link
-          className="p-3 hover:bg-amber-700 text-xl font-semibold bg-amber-600 w-24 text-center rounded-lg transition-colors duration-300 ease-in-out"
-          href={"/"}
-        >
-          Home
-        </Link>
-      </section>
+     <NoMovies title="Movie not found"/>
     );
   return (
     <section className="w-full">
