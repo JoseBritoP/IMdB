@@ -7,7 +7,6 @@ interface MoviesProps {
 }
 
 export default function Movies({ movies }: MoviesProps) {
-  console.log(movies[0])
   return (
     <section className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-7xl mx-auto py-4">
       {movies.map((movie) => (
