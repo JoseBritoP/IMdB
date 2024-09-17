@@ -26,7 +26,9 @@ export default function MovieCard({ movie }: MovieCardProps) {
           </h2>
           <p className="line-clamp-2 text-md">{movie.overview}</p>
           <div className="flex items-center">
-            <p className="font-semibold text-gray-200">{movie.release_date || movie.first_air_date}</p>
+            <p className="font-semibold text-gray-200">
+              {movie.release_date || movie.first_air_date}
+            </p>
             <span className="flex font-medium">
               <FiThumbsUp className="h-5 mr-1 ml-3 text-emerald-500" />
               {movie.vote_count}
