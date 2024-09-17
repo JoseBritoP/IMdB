@@ -1,10 +1,27 @@
-import React from 'react'
+import React from "react";
+import Movies from "../components/shared/MoviesContainer";
 
-export default function HomePage() {
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams: { genre: string };
+}) {
+  const genre = searchParams.genre || "fetchTrending";
+  const res = await fetch(
+    `https://api.themoviedb.org/3${
+      genre === "fetchTopRated" ? "/movie/top_rated" : "/trending/all/week"
+    }?api_key=${process.env.API_KEY}&language=en-US&page=1`
+  );
+
+  if (!res.ok) {
+    throw new Error(`Failed to fetch data: ${res.status}`);
+  }
+
+  const data = await res.json();
+
   return (
-    <div>
-      <h1 className='text-xl'>Hello World!</h1>
-      <h2>IMdB</h2>
-    </div>
-  )
+    <main>
+      <Movies movies={data.results}/>
+    </main>
+  );
 }
