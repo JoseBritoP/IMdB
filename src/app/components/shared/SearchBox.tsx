@@ -15,6 +15,7 @@ export default function SearchBox() {
   };
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setSearch("")
     router.push(`/search/${search}`);
   };
   return (
