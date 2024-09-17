@@ -12,7 +12,6 @@ export default async function SearchPage({
   );
   const data = await res.json();
   const results = data.results;
-  console.log(results)
   return (
     <div>
       {results.length === 0 && (
