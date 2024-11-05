@@ -10,7 +10,8 @@ export default async function HomePage({
   const res = await fetch(
     `https://api.themoviedb.org/3${
       genre === "fetchTopRated" ? "/movie/top_rated" : "/trending/all/week"
-    }?api_key=${process.env.API_KEY}&language=en-US&page=1`,{next:{revalidate:480}}
+    }?api_key=${process.env.API_KEY}&language=en-US&page=1`,
+    { next: { revalidate: 480 } }
   );
 
   if (!res.ok) {
@@ -19,9 +20,5 @@ export default async function HomePage({
 
   const data = await res.json();
 
-  return (
-    <main>
-      <Movies movies={data.results}/>
-    </main>
-  );
+  return <main>{data.results.length && <Movies movies={data.results} />}</main>;
 }
